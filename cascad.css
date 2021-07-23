@@ -1,0 +1,64 @@
+#firsthead {
+    background-color: darkslategray;
+    height : 90px;
+    width: 100%;
+    display:inline-block;
+
+}
+#last{
+  background-color:whitesmoke;  
+  height : 300px;
+  width: 100%;
+  
+  
+
+}
+#fast{
+    background-color: rgb(46, 40, 40);
+    height:71px;
+    width:91px;
+    position: relative;
+    margin-top :0%;
+    
+    left : 200px;
+    display: inline-block;
+}
+#second{
+    background-color: rgb(46, 40, 40);
+    height:71px;
+    width:91px;
+    position: relative;
+    
+    top:100px;
+    left : 105px;
+    display: inline-block;
+
+}
+#third{
+    background-color: rgb(46, 40, 40);
+    height:71px;
+    width:91px;
+    position: relative;
+    
+  top :5px;
+    left:595px;
+    display: inline-block;
+
+}
+#fourth{
+    
+        background-color: rgb(46, 40, 40);
+        height:71px;
+        width:91px;
+        position: relative;
+        
+        top:100px;
+        left : 500px;
+        display: inline-block;
+}
+
+        
+    
+    
+
+
