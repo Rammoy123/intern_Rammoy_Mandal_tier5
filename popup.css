@@ -1,0 +1,60 @@
+.body1{
+    background-color: aqua;
+}
+#clickMe{
+    background-color: #FFBCBC;
+     border:2px solid #008CBA;
+
+    color:black ;
+    
+    padding: 8px 15px;
+    font-size: 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+ 
+#clickMe:hover
+ {    background-color:#4F0E0E;
+        color: white;
+      }
+#clickMe12{
+    background-color:darkkhaki;
+    border:2px solid #008CBA;
+
+   color:black ;
+   
+   padding: 8px 15px;
+   font-size: 20px;
+   border-radius: 12px;
+   font-weight: bold;
+   display: inline-block;
+
+}
+#clickMe12:hover
+ {    background-color:rgb(180, 57, 57);
+        color: white;
+      }
+
+
+
+      #searchName{
+        background-color:#FFF5DA;
+        padding: 8px 15px;
+        border:black;
+        font-size: 18px;
+        margin-top: 10px;
+     
+      }
+     label{
+         background-color:gainsboro;
+         border:2px solid #008CBA;
+
+         
+         padding: 8px 15px;
+         font-size: 20px;
+         border-radius: 12px;
+         font-weight: bold;
+     
+     }
+   
