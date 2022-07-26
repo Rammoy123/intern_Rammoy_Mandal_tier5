@@ -1,0 +1,34 @@
+.parent{
+
+margin:0;
+padding: 0;
+width: 100%;
+background: #f5ebe5;
+height: 32px;
+z-index: 5;
+overflow-x: hidden;
+overflow-y: hidden;
+}
+.child{
+position: relative;
+left:92px
+
+}
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .p {
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .inner{
+    overflow: hidden;
+    height: 90vh;
+  }
+
+
+
+
+

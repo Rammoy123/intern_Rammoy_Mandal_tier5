@@ -1,6 +1,6 @@
-import '../styles/globals.css'
-import "../styles/animate.css"
-import "../styles/main.css"
+import '../styles/assets/css/globals.css'
+import "../styles/assets/css/animate.css"
+import "../styles/assets/css/main.css"
 import "../styles/assets/css/fontawesome.css"
 
 function MyApp({ Component, pageProps }) {

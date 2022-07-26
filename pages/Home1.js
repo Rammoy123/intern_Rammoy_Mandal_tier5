@@ -6,12 +6,13 @@ import $ from 'jquery'
 // import "../../styles/animate.css"
 // import "../../styles/main.css"
 // import "../../styles/fontawesome.css"
-import Search from '../../styles/assets/img/search.svg'
-import logo from '../../styles/assets/img/Logo.svg'
-import iphone12 from '../../styles/assets/img/iPhone-12.svg'
-import Arrow from '../../styles/assets/img/Arrow.svg'
+import Search from '../styles/assets/img/search.svg'
+import logo from '../styles/assets/img/Logo.svg'
+import iphone12 from '../styles/assets/img/iPhone-12.svg'
+import Arrow from '../styles/assets/img/Arrow.svg'
 import { useRouter } from 'next/router'
-import useDebounce from './useDebounce'
+import useDebounce from '../useDebounce'
+import db from './components/Json/retailers.json'
 
 // const [inputValue,setInputValue]=useState({
 // brand:"",
@@ -29,6 +30,7 @@ const Home1 = () => {
     useEffect(() => {
       function handleClickOutside (event) {
         if (focus.current && !focus.current.contains(event.target)) {
+          console.log($('.hide').css('display','none'))
           $('.hide').css('display','none')
         }
       }
@@ -80,7 +82,7 @@ const Home1 = () => {
   }
   console.log(inputValue,"inputValue1111234")
 
-  const de = useDebounce(inputValue.brand, 600)
+  const de = useDebounce(inputValue.brand, 200)
   useEffect(() => {
     setInputValue1(de)
     // setInput4(de1)
@@ -98,9 +100,7 @@ const Home1 = () => {
     })
   }
 
-  const handleChange = e => {
-    console.log(e.target.value)
-  }
+ 
 
   //   const concernedElement =.querySelector("#autocomplete1");
 
@@ -147,7 +147,7 @@ const Home1 = () => {
         <link rel='stylesheet' href='assets/css/animate.css' media='all' />
         <link rel='stylesheet' href='assets/css/main.css' media='all' />
 
-        <link
+        {/* <link
           rel='preload'
           href='fonts/Gilroy-Medium.otf'
           as='font'
@@ -181,7 +181,7 @@ const Home1 = () => {
           as='font'
           type='font/otf'
           crossorigin
-        />
+        /> */}
 
         <link
           href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap'
@@ -194,9 +194,9 @@ const Home1 = () => {
         ></link>
       </Head>
 
-      <section class='main-wrpper'>
-        <div class='main-wrp-mobile'>
-          <div class='main-wrp-mobile-inner'>
+      <section className='main-wrpper'>
+        <div className='main-wrp-mobile'>
+          <div className='main-wrp-mobile-inner'>
             <img src={iphone12.src} alt='iPhone-12' />
             <h2>
               Say hello to the <span>ultimate returns experience.</span>
@@ -204,8 +204,8 @@ const Home1 = () => {
           </div>
         </div>
 
-        <div class='main-wrp-content'>
-          <div class='main-wrp-continner'>
+        <div className='main-wrp-content'>
+          <div className='main-wrp-continner'>
             <a
               onClick={e => {
                 e.preventDefault()
@@ -213,7 +213,7 @@ const Home1 = () => {
                   pathname: '/components/Home1'
                 })
               }}
-              class='site-logo'
+              className='site-logo'
             >
               <img src={logo.src} alt='logo' />
             </a>
@@ -224,9 +224,10 @@ const Home1 = () => {
             </p>
             <form>
               {/* <form autocomplete="off" > */}
-              <div class='autocomplete' ref={focus} id='autocomplete1'>
+              <div className='autocomplete' ref={focus} id='autocomplete1'>
                 <input
                   id='myInput'
+                  autoComplete="off"
                   type='text'
                   name='brand'
                   placeholder='Choose retailer name'
@@ -235,40 +236,39 @@ const Home1 = () => {
                   required
                 />
 
-                <button class='autocomplete-search'>
+                <button className='autocomplete-search'>
                   {' '}
                   <img src={Search.src} alt='logo' />
                 </button>
-                <div id='myInputautocomplete-list' class='autocomplete-items'>
-                  {console.log(arr, 'arrr')}
+                <div id='myInputautocomplete-list' className='autocomplete-items'>
+                 
                   {inputValue1 &&
-                    arr
+                    db
                       .filter(
                         item =>
-                          item
+                          item.name
                             .toLowerCase()
                             .indexOf(inputValue1.toLowerCase()) !== -1
                       )
                       .map(arr1 => {
-                        {
-                          console.log(arr1, 'me arr1')
-                        }
+                       
 
                         return (
-                          <div
+                          <div key={arr1.id}
                             className='hide'
                             onClick={(e) => {
                               setValue(arr1)
                               setInputValue({ ...inputValue, brand: e.target.innerText }
                               )
-                              console.log(e,"rammoy")
+                              
 
                               // $('.hide').css('dusplay','none')
+                              console.log($('.hide'))
                               $('.hide').css('display','none')
                             }}
                           >
                             
-                            {arr1}
+                            {arr1.name}
                           </div>
                         )
                       })}
@@ -279,12 +279,12 @@ const Home1 = () => {
 
               {/* ..............................move to next............... */}
 
-              {/* <div class='input-form'>
+              {/* <div className='input-form'>
                 <label>How many days is your current return policy?</label>
                 <input
                   type='text'
                   name='return1'
-                  class='form-control date-form'
+                  className='form-control date-form'
                   id='return1'
                   aria-describedby='emailHelp'
                   placeholder='ex.10'
@@ -295,7 +295,7 @@ const Home1 = () => {
                 />
                 <p>Days</p>
               </div>
-              <div class='input-form'>
+              <div className='input-form'>
                 <label>
                   In how many days would you ideally like returned items to be
                   back in your inventory?
@@ -303,7 +303,7 @@ const Home1 = () => {
                 <input
                   type='text'
                   name='return2'
-                  class='form-control date-form'
+                  className='form-control date-form'
                   id='return2'
                   aria-describedby='emailHelp'
                   onChange={changeBt}
@@ -317,14 +317,14 @@ const Home1 = () => {
               {/* ...................move to next.......................... */}
               {
               (inputValue.brand) ?(
-              <a onClick={handleClick} style={{background:'#8755DE'}} class='com-button'>
-                Next Step <img class='arrowsvg' src={Arrow.src} alt='arrow' />
+              <a onClick={handleClick} style={{background:'#8755DE',cursor:'pointer'}} className='com-button'>
+                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
               </a>
               ):(
 
                 
-              <a  class='com-button'>
-                Next Step <img class='arrowsvg' src={Arrow.src} alt='arrow' />
+              <a  className='com-button'>
+                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
               </a>
               
               )

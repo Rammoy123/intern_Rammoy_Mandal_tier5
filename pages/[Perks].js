@@ -10,6 +10,9 @@ import ArrowPurple from "../styles/assets/img/Arrowpurple.svg"
 import imageF from "../styles/assets/img/image 1.svg"
 import { useRouter } from 'next/router'
 import { data } from 'jquery'
+import Image from 'next/image'
+import db from './components/Json/retailers.json'
+
 
 
 const Perks = () => {
@@ -18,8 +21,14 @@ const Perks = () => {
  
     const [onlyBrand,setOnlyBrand]=useState({})
     const [onlyChecker,setOnlyChecker]=useState({})
+    const [data,setData]=useState({})
+
+
     const router = useRouter()
     console.log(router.query,"query123")
+
+
+
 
 
     const [inputValue, setInputValue] = useState({
@@ -76,6 +85,14 @@ const Perks = () => {
     },[router.query])
 
 
+
+    useEffect(() => {
+      setData(db)
+    }, [])
+
+    console.log(data,"data from json")
+
+
     const handleBar = e => {
         // Object.assign(inputValue,{retur})
     
@@ -84,7 +101,7 @@ const Perks = () => {
       // )
   
       router.push({
-        pathname: '/components/ReturnPickup',
+        pathname: '/ReturnPickup',
         query:{brand:onlyBrand.Perks,returnDay:inputValue.return1,pickUp:inputValue.return2} 
          }
     )
@@ -92,51 +109,73 @@ const Perks = () => {
 
   return (
     <>
-    <section class="main-wrpper">
+    <section className="main-wrpper">
     {console.log(onlyBrand.Perks,"lolll")}
     
      {/* <h1> {data.Perks} </h1> */}
-        <div class="main-wrp-mobile">
-            <div class="main-wrp-mobile-inner">
+        <div className="main-wrp-mobile">
+            <div className="main-wrp-mobile-inner">
                 <img src={iphone12.src} alt="iPhone-12"/>
+                {/* <img src={db[0].image_url} alt="iPhone-12"/> */}
                 <h2>Say hello to the <span>ultimate returns experience.</span></h2>
             </div>
          </div>
-        <div class="main-wrp-content">
-            <div class="main-wrp-continner">
+        <div className="main-wrp-content">
+            <div className="main-wrp-continner">
                 <a onClick={(e)=>{e.preventDefault();
                  router.push({
         pathname: '/components/Home1'
          })
-                }} class="site-logo">
+                }} className="site-logo">
                     <img src={logo.src} alt="logo"/>
                 </a>
             
 
 
-                <div class="logo-container">
-                    <img src={imageF.src} alt="yourlogo"/>
+                <div className="logo-container">
+                {
+(onlyBrand.Perks) && (
+                  db.map((arr)=>{
+                    {/* console.log(onlyBrand.Perks,"inside everything") */}
+                    {/* console.log(arr.name,onlyBrand.Perks ,"inside me") */}
+                    
+                    if(onlyBrand.Perks==arr.name){
+                      console.log(onlyBrand.Perks,"inside everything")
+                   
+                      
+                      return(
+                    <img key={arr.id} src={arr.img_thumbnail} width="135"   alt="yourlogo"/>
+                      )
+                    }
+                  }))
+                }
+
+{/* {console.log(db[0].image_url,"lolll")} */}
+     
+                {/* <img src={db[0].img_thumbnail} width="135"   alt="yourlogo"/> */}
+                
                     <span></span>
-                    <img src={blackLogo.src} class="blacklogo" alt="logo"/>
+                    <img src={blackLogo.src} className="blacklogo" alt="logo"/>
                 </div>
 
-                <div class='input-form'>
+                <div className='input-form'>
                 <label>How many days is your current return policy?</label>
                 <input
                   type='text'
                   name='return1'
-                  class='form-control date-form'
+                  autoComplete="off"
+                  className='form-control date-form'
                   id='return1'
                   aria-describedby='emailHelp'
                   placeholder='ex.10'
                   value={inputValue.return1}
                   onChange={changeBt}
                   
-                  onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
+                  // onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
                 />
                 <p>Days</p>
               </div>
-              <div class='input-form'>
+              <div className='input-form'>
                 <label>
                   In how many days would you ideally like returned items to be
                   back in your inventory?
@@ -144,7 +183,8 @@ const Perks = () => {
                 <input
                   type='text'
                   name='return2'
-                  class='form-control date-form'
+                  autoComplete="off"
+                  className='form-control date-form'
                   id='return2'
                   aria-describedby='emailHelp'
                   onChange={changeBt}
@@ -155,15 +195,15 @@ const Perks = () => {
                 <p>Days</p>
               </div>
 
-                <div class="button-container">
-                    <a href="#" class="">
+                <div className="button-container">
+                    <a href="#"  style={{textDecoration:'none',cursor:'pointer'}} className="">
                         Our App
-                        <img src={ArrowPurple.src} class="arrowimg" alt="arrow"/>
+                        <img src={ArrowPurple.src} className="arrowimg" alt="arrow"/>
                     </a>
 
-                    <a onClick={handleBar} class="">
+                    <a onClick={handleBar} style={{textDecoration:'none',cursor:'pointer'}} className="">
                         Your website with RQ
-                        <img src={ArrowPurple.src} class="arrowimg" alt="arrow"/>
+                        <img src={ArrowPurple.src} className="arrowimg" alt="arrow"/>
                     </a>
 
                 </div>
@@ -172,8 +212,13 @@ const Perks = () => {
                 
 
                
-                <a href="#" class="com-button parkbtn">
-                    See your perks <img class="arrowsvg" src={Arrow.src} alt="arrow"/>
+                <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={(e)=>{e.preventDefault();
+                 router.push({
+        pathname: '/components/SeeUrPerks',
+        query:{brand:onlyBrand.Perks}
+         })
+                }} className="com-button parkbtn">
+                    See your perks <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
 
             </div>

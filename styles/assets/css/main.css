@@ -1,35 +1,35 @@
 
 @font-face {
   font-family: "gilroy-bold";
-  src: url(../styles/assets/fonts/Gilroy-Bold.otf);
+  src: url(../fonts/Gilroy-Bold.otf);
   font-display: swap;
   font-style: normal
 }
 
 @font-face {
   font-family: "gilroy-medium";
-  src: url(../styles/assets/fonts/Gilroy-Medium.otf);
+  src: url(../fonts/Gilroy-Medium.otf);
   font-display: swap;
   font-style: normal
 }
 
 @font-face {
   font-family: "gilroy-semibold";
-  src: url(../styles/assets/fonts/Gilroy-SemiBold.otf);
+  src: url(../fonts/Gilroy-SemiBold.otf);
   font-display: swap;
   font-style: normal
 }
 
 @font-face {
   font-family: "gilroy-heavy";
-  src: url(../styles/assets/fonts/Gilroy-Heavy.otf);
+  src: url(../fonts/Gilroy-Heavy.otf);
   font-display: swap;
   font-style: normal
 }
 
 @font-face {
   font-family: "gilroy-Light";
-  src: url(../styles/assets/fonts/Gilroy-Light.otf);
+  src: url(../fonts/Gilroy-Light.otf);
   font-display: swap;
   font-style: normal
 }
@@ -577,7 +577,7 @@ img.arrowsvg{
   position: absolute;
   top: 20px;
   left: 20px;
-  background: url(../styles/assets/img/search.svg);
+  background: url(../img/search.svg);
   width: 20px;
   height: 20px;
 }
@@ -781,8 +781,10 @@ a.com-button.parkbtn{
     position: absolute;
     width: 2px;
     height: 45px;
-    top: 36%;
-    left: 50%;
+    top:32%;
+    /* top: 25%; */
+    /* left: 50%; */
+    left:47%;
     transform: translateX(-50%, -50%);
 }
 
