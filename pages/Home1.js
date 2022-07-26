@@ -96,7 +96,7 @@ const Home1 = () => {
 
     router.push({
       pathname: '/[Perks].js',
-      query:  {perks:inputValue.brand} 
+      query:  {brand:inputValue.brand} 
     })
   }
 

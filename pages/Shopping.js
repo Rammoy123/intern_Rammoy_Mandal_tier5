@@ -79,10 +79,16 @@ const Shopping = () => {
 
                
 
-               <a style={{background:'#8755DE',cursor:'pointer',textDecoration:'none',color:'white'}} onClick={handleBar}   className="com-button">
+               <a   style={{background:'#8755DE',cursor:'pointer',textDecoration:'none',color:'white'}}   className="com-button">
                    Countinue Shopping 
                </a>
-               
+
+               <div style={{textAlign:"center",marginTop:"20px"}}>
+ 
+               <a onClick={handleBar} style={{ cursor:"pointer",color:'#8755DE',paddingBottom:"5px",borderBottom:"2px solid",fontSize:"18px"}}> End Demo  </a>
+            
+          
+             </div>  
 
            </div>
        </div>

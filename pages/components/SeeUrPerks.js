@@ -29,7 +29,7 @@ const SeeUrPerks = () => {
   
       router.push({
         pathname: '/[Perks].js',
-         query:{perks:router.query.brand}
+         query:{brand:router.query.brand}
          
          }
     )
@@ -42,7 +42,7 @@ const SeeUrPerks = () => {
   <div className={style.parent}>
   <div className={style.child}>
   
-  <Link href={{pathname:'/[Perks].js',query:{perks:router.query.brand}}}>
+  <Link href={{pathname:'/[Perks].js',query:{brand:router.query.brand}}}>
   <a> <BiChevronLeft style={{fontSize:"25px",color:"black",zIndex: 5}}/> </a>
 </Link>
 

@@ -65,10 +65,10 @@ const Perks = () => {
 
         const set=(data)=>{
 
-            if(data.perks)
+            if(data.brand)
             {
                 
-                setOnlyBrand({Perks:data.perks})
+                setOnlyBrand({Perks:data.brand})
 
             }
             else{
@@ -196,12 +196,12 @@ const Perks = () => {
               </div>
 
                 <div className="button-container">
-                    <a href="#"  style={{textDecoration:'none',cursor:'pointer'}} className="">
+                    <a   style={{textDecoration:'none',cursor:'pointer',color:"#8755de"}} className="">
                         Our App
                         <img src={ArrowPurple.src} className="arrowimg" alt="arrow"/>
                     </a>
 
-                    <a onClick={handleBar} style={{textDecoration:'none',cursor:'pointer'}} className="">
+                    <a onClick={handleBar} style={{textDecoration:'none',cursor:'pointer',color: "#8755de"}} className="">
                         Your website with RQ
                         <img src={ArrowPurple.src} className="arrowimg" alt="arrow"/>
                     </a>
