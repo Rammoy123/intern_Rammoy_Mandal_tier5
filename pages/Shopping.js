@@ -36,9 +36,8 @@ const Shopping = () => {
            <div className="main-wrp-continner">
                <a onClick={(e)=>{e.preventDefault();
                  router.push({
-        pathname: '/components/Home1'
-         })
-                }} className=" top-logo-container" >
+        pathname: '/Home1'
+         })}}className=" top-logo-container" >
                    <img src={logo.src} alt="logo"/>
                </a>
 

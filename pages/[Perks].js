@@ -124,7 +124,7 @@ const Perks = () => {
             <div className="main-wrp-continner">
                 <a onClick={(e)=>{e.preventDefault();
                  router.push({
-        pathname: '/components/Home1'
+        pathname: '/Home1'
          })
                 }} className="site-logo">
                     <img src={logo.src} alt="logo"/>
@@ -196,12 +196,14 @@ const Perks = () => {
               </div>
 
                 <div className="button-container">
-                    <a   style={{textDecoration:'none',cursor:'pointer',color:"#8755de"}} className="">
+                {/* style={{textDecoration:'none',cursor:'pointer',color:"#8755de"}} */}
+                    <a    className="">
                         Our App
                         <img src={ArrowPurple.src} className="arrowimg" alt="arrow"/>
                     </a>
+                    {/* style={{textDecoration:'none',cursor:'pointer',color: "#8755de"}} */}
 
-                    <a onClick={handleBar} style={{textDecoration:'none',cursor:'pointer',color: "#8755de"}} className="">
+                    <a onClick={handleBar}   style={{textDecoration:'none',cursor:'pointer',color: "#8755de"}} className="">
                         Your website with RQ
                         <img src={ArrowPurple.src} className="arrowimg" alt="arrow"/>
                     </a>
@@ -212,12 +214,17 @@ const Perks = () => {
                 
 
                
-                <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={(e)=>{e.preventDefault();
+                {/* <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={(e)=>{e.preventDefault();
                  router.push({
         pathname: '/components/SeeUrPerks',
         query:{brand:onlyBrand.Perks}
          })
                 }} className="com-button parkbtn">
+                    See your perks <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
+                </a> */}
+
+
+                        <a  className="com-button parkbtn">
                     See your perks <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
 

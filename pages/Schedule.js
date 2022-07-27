@@ -69,11 +69,11 @@ const Schedule = () => {
                    <div className="logo-top-section">
                        <a onClick={(e)=>{e.preventDefault();
                  router.push({
-        pathname: '/components/Home1'
+        pathname: '/Home1'
          })
                 }} className="site-logo"><img src={LogoOrg.src} alt="logo"/></a>
                        <div className="logo-container">
-                           <a href="#">
+                           <a >
                                {/* <img src={imageF.src} alt="yourlogo"/> */}
 
                                {
@@ -94,7 +94,7 @@ const Schedule = () => {
                 }
                            </a>
                            <span></span>
-                           <a href="https://bitpastel.io/ReturnQueen/b2b/">
+                           <a >
                                <img src={blackLogo.src} className="blacklogo" alt="logo"/>
                            </a>
                        </div>

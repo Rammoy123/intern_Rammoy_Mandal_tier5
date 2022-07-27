@@ -13,7 +13,7 @@ import Arrow from '../styles/assets/img/Arrow.svg'
 import { useRouter } from 'next/router'
 import useDebounce from '../useDebounce'
 import db from './components/Json/retailers.json'
-
+import Link from 'next/link'
 // const [inputValue,setInputValue]=useState({
 // brand:"",
 // return1:"",
@@ -26,12 +26,19 @@ import db from './components/Json/retailers.json'
 const Home1 = () => {
   const focus = useRef()
 
+  const [myDb,setmyDb]=useState(db)
+  console.log(db,"db")
+
 
     useEffect(() => {
       function handleClickOutside (event) {
         if (focus.current && !focus.current.contains(event.target)) {
           console.log($('.hide').css('display','none'))
           $('.hide').css('display','none')
+          // $('#myInputautocomplete-list').css('height','0vh')
+         
+
+          setHandFocus(false)
         }
       }
 
@@ -40,6 +47,32 @@ const Home1 = () => {
         document.removeEventListener('mousedown', handleClickOutside)
       }
     }, [focus])
+    const [afterData,setAfterData]=useState([])
+    useEffect(()=>{
+      const am1={}
+      const db1=db.filter((ar)=>ar.name!="Others")
+      db.map((am)=>{if(am.name=="Others"){
+        am1=am
+      }})
+      console.log(am1,"am111")
+      
+      const myData1 = db1
+ .sort((a, b) => a.name.trim().localeCompare(b.name.trim()))
+ .map((item, i) => {return(item)})
+ 
+ myData1.splice(0, 0, am1)
+const myData2=myData1.filter((arr)=>arr.name[0].charCodeAt(0)<65 && arr.name[0].charCodeAt(0)>32 )
+const myData3=myData1.filter((arr)=>arr.name[0].charCodeAt(0)>=65 || arr.name[0].charCodeAt(0)<=32)
+const myDataOrg=myData3.concat(myData2);
+ setAfterData(myDataOrg)
+
+
+
+
+
+    },[myDb])
+    console.log(afterData,"afterData")
+    console.log(db,"dbbbb")
   
 
   const [inputValue, setInputValue] = useState({
@@ -65,7 +98,7 @@ const Home1 = () => {
     // ].filter(item => item.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
-  let arr = ['Homegoods', 'Homesake', 'H&M', 'Other']
+  // let arr = ['Homegoods', 'Homesake', 'H&M', 'Other']
 
   const changeBt = e => {
     // clear timeout when input changes value
@@ -90,7 +123,9 @@ const Home1 = () => {
 
   const router = useRouter()
 
+
   const handleClick = e => {
+    console.log(e,"click")
     e.preventDefault()
     // {brand:inputValue.brand,returnDay:inputValue.return1,pickUp:inputValue.return2} 
 
@@ -99,6 +134,21 @@ const Home1 = () => {
       query:  {brand:inputValue.brand} 
     })
   }
+ const [handFocus,setHandFocus] =useState(false)
+  
+  const handleFocus=(e)=>{
+    console.log(e.target,"length")
+    // handFocus=e.target
+
+    setHandFocus(true)
+    Object.assign(handFocus,{lolll:"hey"})
+    console.log(handFocus,"handfocusss")
+  }
+  
+  // useEffect(()=>{
+  //   console.log()
+  
+  // },[handFocus])
 
  
 
@@ -210,7 +260,7 @@ const Home1 = () => {
               onClick={e => {
                 e.preventDefault()
                 router.push({
-                  pathname: '/components/Home1'
+                  pathname: '/Home1'
                 })
               }}
               className='site-logo'
@@ -223,7 +273,7 @@ const Home1 = () => {
               customers!
             </p>
             <form>
-              {/* <form autocomplete="off" > */}
+            
               <div className='autocomplete' ref={focus} id='autocomplete1'>
                 <input
                   id='myInput'
@@ -233,6 +283,7 @@ const Home1 = () => {
                   placeholder='Choose retailer name'
                   value={inputValue.brand}
                   onChange={changeBt}
+                  onFocus={(e)=>{setHandFocus(true)}}
                   required
                 />
 
@@ -241,19 +292,26 @@ const Home1 = () => {
                   <img src={Search.src} alt='logo' />
                 </button>
                 <div id='myInputautocomplete-list' className='autocomplete-items'>
-                 
-                  {inputValue1 &&
-                    db
+                
+
+                  {  handFocus && 
+                    afterData
                       .filter(
                         item =>
                           item.name
                             .toLowerCase()
-                            .indexOf(inputValue1.toLowerCase()) !== -1
+                            .indexOf(de.toLowerCase()) !== -1
                       )
                       .map(arr1 => {
+                      
                        
 
                         return (
+                          
+
+
+                        
+                          
                           <div key={arr1.id}
                             className='hide'
                             onClick={(e) => {
@@ -262,7 +320,7 @@ const Home1 = () => {
                               )
                               
 
-                              // $('.hide').css('dusplay','none')
+                              
                               console.log($('.hide'))
                               $('.hide').css('display','none')
                             }}
@@ -270,6 +328,7 @@ const Home1 = () => {
                             
                             {arr1.name}
                           </div>
+                          
                         )
                       })}
                 </div>
@@ -316,20 +375,29 @@ const Home1 = () => {
 
               {/* ...................move to next.......................... */}
               {
-              (inputValue.brand) ?(
-              <a onClick={handleClick} style={{background:'#8755DE',cursor:'pointer'}} className='com-button'>
-                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
-              </a>
-              ):(
-
-                
-              <a  className='com-button'>
-                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
-              </a>
+ (afterData.find((arrAmi)=>arrAmi.name==inputValue.brand)) ?(
               
-              )
+       
+               <a  onClick={handleClick}   style={{background:'#8755DE',cursor:'pointer',marginTop:"130px"}} className='com-button'>
+                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
+              </a> 
+              
+   
+                
+   
+               
+
+               ):( <a className='com-button' style={{marginTop:"130px"}}>
+                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
+              </a>)
+  
+          
+           
+    
 
               }
+
+              
             </form>
           </div>
         </div>
@@ -339,3 +407,19 @@ const Home1 = () => {
 }
 
 export default Home1
+  {/* (afterData.find((arrAmi)=>arrAmi.name==inputValue.brand)) ?(
+              
+       
+               <a    style={{background:'#8755DE',cursor:'pointer'}} className='com-button'>
+                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
+              </a> 
+              
+   
+                
+   
+               
+
+               ):( <a onClick={(e)=>console.log(e)}   className='com-button'>
+                Next Step <img className='arrowsvg' src={Arrow.src} alt='arrow' />
+              </a>) */}
+   
