@@ -9,11 +9,22 @@ import db from './components/Json/retailers.json'
 
 const ReturnPickup = () => {
   const [data, setData] = useState({})
+  const [onlyBrand,setOnlyBrand]=useState({})
 
   const router = useRouter()
-  useEffect(() => {
-    setData(router.query)
-  }, [])
+  useEffect(()=>{
+    const set = data => {
+      
+    
+    const filtered=db.filter((arr)=>arr.slug==data.slug)
+    if(filtered.length>0){
+    setOnlyBrand({ brand: filtered[0].name })
+    }
+    }
+    set(router.query)
+  },[router.query])
+ 
+ 
 
   return (
     <>
@@ -21,12 +32,12 @@ const ReturnPickup = () => {
         <div className='main-wrp-content'>
           <div className='main-wrp-continner'>
             <div className='logo-container'>
-              {router.query.brand &&
+              {onlyBrand.brand &&
                 db.map(arr => {
                 
 
-                  if (router.query.brand == arr.name) {
-                    console.log(router.query.brand, 'inside everything')
+                  if (onlyBrand.brand == arr.name) {
+                   
 
                     return (
                       <img
@@ -44,12 +55,12 @@ const ReturnPickup = () => {
             </div>
 
             <div className='paragraph'>
-              {router.query.brand != 'Other' ? (
+              {(onlyBrand.brand) != 'Other' ? (
                 <p>
-                  Hi {router.query.brand} Customer!,
+                  Hi {onlyBrand.brand} Customer!,
                   <br />
                   <br />
-                  We hope you love your <i>{router.query.brand}</i> purchase.
+                  We hope you love your <i>{onlyBrand.brand}</i> purchase.
                   But in case you don’t, you can return any purchase within{' '}
                   {router.query.returnDay} Days.
                 </p>
@@ -108,7 +119,7 @@ const ReturnPickup = () => {
                 </span>
               </span>
 
-              <span>{router.query.pickUp} Days</span>
+              <span>{router.query.IdealInInventory} Days</span>
             </a>
           </div>
         </div>

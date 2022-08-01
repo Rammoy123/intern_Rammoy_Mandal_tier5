@@ -1,3 +1,5 @@
+
+import React,{useEffect,useState} from 'react'
 import logo from '../styles/assets/img/purpleLogo.svg'
 
 import blackLogo from '../styles/assets/img/blacklogo.svg'
@@ -6,9 +8,24 @@ import { useRouter } from 'next/router'
 import db from './components/Json/retailers.json'
 
 const Shopping = () => {
+  const [onlyBrand,setOnlyBrand]=useState({})
   const router = useRouter()
 
   console.log(router.query, 'query in')
+
+
+  useEffect(()=>{
+    const set = data => {
+      
+    
+    const filtered=db.filter((arr)=>arr.slug==data.slug)
+    if(filtered.length>0){
+    setOnlyBrand({ brand: filtered[0].name })
+    }
+    
+    }
+    set(router.query)
+  },[router.query])
 
   const handleBar = e => {
     e.preventDefault()
@@ -38,9 +55,9 @@ const Shopping = () => {
             </a>
 
             <div className='logo-container'>
-              {router.query.Brand &&
+              {onlyBrand.brand &&
                 db.map(arr => {
-                  if (router.query.Brand == arr.name) {
+                  if (onlyBrand.brand == arr.name) {
                     console.log(router.query.Brand, 'inside everything')
 
                     return (
@@ -92,6 +109,22 @@ const Shopping = () => {
             </a>
 
             <div style={{ textAlign: 'center', marginTop: '20px' }}>
+              <a
+                onClick={handleBar}
+                style={{
+                  cursor: 'pointer',
+                  color: '#8755DE',
+                  paddingBottom: '5px',
+                  borderBottom: '2px solid',
+                  fontSize: '18px'
+                }}
+              >
+                {' '}
+                Back to Home{' '}
+              </a>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '20px',paddingBottom:'15px' }}>
               <a
                 onClick={handleBar}
                 style={{

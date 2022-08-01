@@ -7,14 +7,28 @@ import Arrow from '../styles/assets/img/Arrow.svg'
 import blackLogo from '../styles/assets/img/blacklogo.svg'
 import ArrowPurple from '../styles/assets/img/Arrowpurple.svg'
 
+
+
+
+
+
+
 import { useRouter } from 'next/router'
 
 import db from './components/Json/retailers.json'
 
+
+
+
 const Perks = () => {
+  
+
+
   const [onlyBrand, setOnlyBrand] = useState({})
   const [onlyChecker, setOnlyChecker] = useState({})
   const [data, setData] = useState({})
+
+  
 
   const router = useRouter()
   console.log(router.query, 'query123')
@@ -23,6 +37,7 @@ const Perks = () => {
     return1: '',
     return2: ''
   })
+  
 
   const changeBt = e => {
     console.log(e.target.name, 'valueee')
@@ -38,12 +53,19 @@ const Perks = () => {
 
   useEffect(() => {
     const set = data => {
-      if (data.brand) {
-        setOnlyBrand({ Perks: data.brand })
+      if (data.slug) {
+        const filtered=db.filter((arr)=>arr.slug==data.slug)
+        setOnlyBrand({ Perks: filtered[0].name,Slug:data.slug })
       } else {
         console.log(data.Perks, 'heyy im not')
+        const filtered1=db.filter((arr)=>arr.name==data.Perks)
+        console.log(filtered1,"i am filtered")
+        if(filtered1.length>0){
+          setOnlyBrand({ Perks: data.Perks,Slug:filtered1[0].slug })
 
-        setOnlyBrand({ Perks: data.Perks })
+        }
+
+        // setOnlyBrand({ Perks: data.Perks,Slug:filtered1[0].slug })
       }
     }
 
@@ -57,17 +79,98 @@ const Perks = () => {
   console.log(data, 'data from json')
 
   const handleBar = e => {
+
+
     e.preventDefault()
+    console.log(router.query,"queryyyy")
+
+    if((inputValue.return1)&& (inputValue.return2)){
+    
 
     router.push({
       pathname: '/ReturnPickup',
       query: {
-        brand: onlyBrand.Perks,
+        slug: onlyBrand.Slug,
         returnDay: inputValue.return1,
-        pickUp: inputValue.return2
+        IdealInInventory: inputValue.return2
       }
     })
   }
+  else{
+    router.push({
+      pathname: '/ReturnPickup',
+      query: {
+        slug: onlyBrand.Slug,
+        returnDay:router.query.returnDay ,
+        IdealInInventory: router.query.IdealInInventory
+      }
+    })
+
+  }
+
+  }
+  const handlePdf=e=>{
+
+
+    e.preventDefault();
+
+    if((router.query.slug) &&(router.query.returnDay)&&(router.query.IdealInInventory)){
+      router.push({
+pathname: '/components/SeeUrPerks',
+query:{   slug: onlyBrand.Slug,
+  returnDay:router.query.returnDay ,
+  IdealInInventory: router.query.IdealInInventory
+}
+
+       } )
+      }
+      else{
+        router.push({
+          pathname: '/components/SeeUrPerks',
+          query:{   slug: onlyBrand.Slug
+            
+          }
+          
+                 } )
+      
+
+
+      }
+  }
+
+  const handleFigma=(e)=>{
+    e.preventDefault();
+    console.log(router.query,"i am in")
+
+
+    if((router.query.slug) &&(router.query.returnDay)&&(router.query.IdealInInventory)){
+      console.log("i am innn-first")
+      router.push({
+pathname: '/Demo',
+query:{   slug: onlyBrand.Slug,
+  returnDay:router.query.returnDay ,
+  IdealInInventory: router.query.IdealInInventory
+}
+
+       } )
+      }
+      else{
+        console.log("i am innn")
+        router.push({
+          pathname: '/Demo',
+          query:{   slug: onlyBrand.Slug
+            
+          }
+          
+                 } )
+      
+
+
+      }
+
+  }
+
+
 
   return (
     <>
@@ -99,6 +202,7 @@ const Perks = () => {
             </a>
 
             <div className='logo-container'>
+            {console.log(onlyBrand,"LOLLL")}
               {onlyBrand.Perks &&
                 db.map(arr => {
                   if (onlyBrand.Perks == arr.name) {
@@ -119,6 +223,8 @@ const Perks = () => {
               <img src={blackLogo.src} className='blacklogo' alt='logo' />
             </div>
 
+            
+  {   !((router.query.slug)&&(router.query.returnDay)&&(router.query.IdealInInventory)) && (<div>
             <div className='input-form'>
               <label>How many days is your current return policy?</label>
               <input
@@ -134,6 +240,8 @@ const Perks = () => {
               />
               <p>Days</p>
             </div>
+            
+            
             <div className='input-form'>
               <label>
                 In how many days would you ideally like returned items to be
@@ -152,14 +260,16 @@ const Perks = () => {
               />
               <p>Days</p>
             </div>
+            </div>)
+  }
 
-            <div className='button-container'>
-              {/* style={{textDecoration:'none',cursor:'pointer',color:"#8755de"}} */}
+            {/* <div className='button-container'>
+    
               <a className=''>
                 Our App
                 <img src={ArrowPurple.src} className='arrowimg' alt='arrow' />
               </a>
-              {/* style={{textDecoration:'none',cursor:'pointer',color: "#8755de"}} */}
+ 
 
               <a
                 onClick={handleBar}
@@ -173,22 +283,64 @@ const Perks = () => {
                 Your website with RQ
                 <img src={ArrowPurple.src} className='arrowimg' alt='arrow' />
               </a>
-            </div>
+            </div> */}
+           
 
-            {/* <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={(e)=>{e.preventDefault();
-                 router.push({
-        pathname: '/components/SeeUrPerks',
-        query:{brand:onlyBrand.Perks}
-         })
-                }} className="com-button parkbtn">
+
+            <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handleFigma} className="com-button parkbtn">
+                    returnQueen Customer Experience <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
+                </a>
+                <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handleBar} className="com-button parkbtn">
+                    Your Website With RQ <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
+                </a>
+                <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handlePdf} className="com-button parkbtn">
                     See your perks <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
-                </a> */}
+                </a>
+            
+                
 
-            <a className='com-button parkbtn'>
+           
+            {/* <a  href={'/eTail.pdf'}  rel="noreferrer" className='com-button parkbtn'>
               See your perks{' '}
               <img className='arrowsvg' src={Arrow.src} alt='arrow' />
-            </a>
+            </a> */}
+            {/* {
+              window.open('/eTail.pdf')
+            } */}
+
+            {/* .....for another page......... */}
+            
+
+              {/* <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.12.313/build/pdf.worker.min.js">
+          <Viewer   fileUrl={'/eTail.pdf'}
+            plugins={[defaultLayoutPluginInstance]} />
+      </Worker> */}
+
+            
+
+
+            {/* ........... */}
           </div>
+          <div style={{ textAlign: 'center', marginTop: '20px',paddingBottom:'15px' }}>
+              <a
+                onClick={(e)=>e => {
+                e.preventDefault()
+                router.push({
+                  pathname: '/Home1'
+                })
+              }}
+                style={{
+                  cursor: 'pointer',
+                  color: '#8755DE',
+                  paddingBottom: '5px',
+                  borderBottom: '2px solid',
+                  fontSize: '18px'
+                }}
+              >
+                {' '}
+                End Demo{' '}
+              </a>
+            </div>
         </div>
       </section>
     </>
@@ -196,3 +348,4 @@ const Perks = () => {
 }
 
 export default Perks
+        {/* style={{textDecoration:'none',cursor:'pointer',color: "#8755de"}} */}

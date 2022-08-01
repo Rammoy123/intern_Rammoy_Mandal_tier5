@@ -9,6 +9,7 @@ import Arrow from '../styles/assets/img/Arrow.svg'
 import { useRouter } from 'next/router'
 import useDebounce from '../useDebounce'
 import db from './components/Json/retailers.json'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Home1 = () => {
   const focus = useRef()
@@ -29,7 +30,8 @@ const Home1 = () => {
       if (focus.current && !focus.current.contains(event.target)) {
         console.log($('.hide').css('display', 'none'))
         $('.hide').css('display', 'none')
-        // $('#myInputautocomplete-list').css('height','0vh')
+        $('#myInputautocomplete-list').css('height','0vh')
+        // myInputautocomplete-list
 
         setHandFocus(false)
       }
@@ -117,19 +119,31 @@ else{
   //Router push
 
   const handleClick = e => {
+const filtered=db.filter((arr)=>arr.name==inputValue.brand)
+console.log(filtered,"this is filtered")
+
     console.log(e, 'click')
     e.preventDefault()
     // {brand:inputValue.brand,returnDay:inputValue.return1,pickUp:inputValue.return2}
 
     router.push({
       pathname: '/[Perks].js',
-      query: { brand: inputValue.brand }
+      query: { slug: filtered[0].slug,  returnDay: inputValue.return1,
+        IdealInInventory : inputValue.return2 }
     })
   }
   const [handFocus, setHandFocus] = useState(false)
 
 
   // }
+
+  useEffect(()=>{
+    if(handFocus==true){
+      $('#myInputautocomplete-list').css('height','35vh')
+    }
+
+
+  },[handFocus])
 
   return (
     <>
@@ -271,8 +285,12 @@ else{
                     
                       .map(arr1 => {
                         {/* console.log(arr1,"arre12") */}
+                        
                         return (
-                          <div
+                       
+
+
+   <div
                             key={arr1.id}
                             className='hide'
                             onClick={e => {
@@ -284,10 +302,13 @@ else{
 
                               console.log($('.hide'))
                               $('.hide').css('display', 'none')
+                              $('#myInputautocomplete-list').css('height','0vh')
                             }}
                           >
                             {arr1.name}
                           </div>
+
+             
                         )
                       })}
                 </div>
@@ -297,7 +318,7 @@ else{
 
               {/* ..............................move to next............... */}
 
-              {/* <div className='input-form'>
+              <div className='input-form'>
                 <label>How many days is your current return policy?</label>
                 <input
                   type='text'
@@ -308,6 +329,7 @@ else{
                   placeholder='ex.10'
                   value={inputValue.return1}
                   onChange={changeBt}
+                  autoComplete='off'
                   
                   onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
                 />
@@ -327,19 +349,20 @@ else{
                   onChange={changeBt}
                   placeholder='ex.10'
                   value={inputValue.return2}
+                  autoComplete='off'
                  
                 />
                 <p>Days</p>
-              </div> */}
+              </div>
 
               {/* ...................move to next.......................... */}
-              {afterData.find(arrAmi => arrAmi.name == inputValue.brand) ? (
+              {((afterData.find(arrAmi => arrAmi.name == inputValue.brand)) &&(inputValue.return1)&&(inputValue.return2)) ? (
                 <a
                   onClick={handleClick}
                   style={{
                     background: '#8755DE',
                     cursor: 'pointer',
-                    marginTop: '130px'
+                   
                   }}
                   className='com-button'
                 >
@@ -347,7 +370,8 @@ else{
                   <img className='arrowsvg' src={Arrow.src} alt='arrow' />
                 </a>
               ) : (
-                <a className='com-button' style={{ marginTop: '130px' }}>
+                
+                <a className='com-button' >
                   Next Step{' '}
                   <img className='arrowsvg' src={Arrow.src} alt='arrow' />
                 </a>
@@ -361,6 +385,26 @@ else{
 }
 
 export default Home1
+
+
+// (
+//   <a
+//     onClick={handleClick}
+//     style={{
+//       background: '#8755DE',
+//       cursor: 'pointer',
+//       marginTop: '130px'
+//     }}
+//     className='com-button'
+//   >
+//     Next Step{' '}
+//     <img className='arrowsvg' src={Arrow.src} alt='arrow' />
+//   </a>
+// )
+
+// submit button height
+
+// style={{ marginTop: '130px' }}
 {
   /* (afterData.find((arrAmi)=>arrAmi.name==inputValue.brand)) ?(
               
@@ -393,3 +437,28 @@ export default Home1
 
 // )
 // .map(arr1 => {
+
+// ............important.......
+   {/* <div
+                            key={arr1.id}
+                            className='hide'
+                            onClick={e => {
+                              setValue(arr1)
+                              setInputValue({
+                                ...inputValue,
+                                brand: e.target.innerText
+                              })
+
+                              console.log($('.hide'))
+                              $('.hide').css('display', 'none')
+                            }}
+                          >
+                            {arr1.name}
+                          </div> */}
+
+
+                        //   <Dropdown.Menu show>
+   
+                        //   <Dropdown.Item eventKey="2" onClick={(e)=>console.log("lol")}>Another action</Dropdown.Item>
+                    
+                        // </Dropdown.Menu>

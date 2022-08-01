@@ -24,9 +24,24 @@ left:92px
     overflow: hidden;
   }
   .inner{
-    overflow: hidden;
+    /* overflow: hidden;
+    height: 90vh; */
+    overflow-y: scroll;
+    overflow-x: hidden;
     height: 90vh;
   }
+  .inner1{
+     overflow: hidden;
+    height: 90vh;
+
+  }
+
+  /* .inner Document .inner1{
+    width:100%
+  } */
+ 
+
+
 
 
 
