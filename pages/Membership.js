@@ -29,18 +29,18 @@ const Membership = () => {
   <>
 
 
-<section class="memebrship">
+<section className="memebrship">
 
-<div class="text-center">
+<div className="text-center">
     <img src={LogoOrg.src}/>
 </div>
 
 
 
 
-<div class="membership-plans">
-    <div class="backsection">
-        <div class="backbutton">
+<div className="membership-plans">
+    <div className="backsection">
+        <div className="backbutton">
             <a style={{cursor:'pointer'}} onClick={handleBar}>
                 <img src={vector.src}/>
                 Back
@@ -50,16 +50,16 @@ const Membership = () => {
             Membership Plans
         </h1>
     </div>
-    <div class="membership-container">
-        <div class=" membership-card">
-            <div class="number-wrap">
+    <div className="membership-container">
+        <div className=" membership-card">
+            <div className="number-wrap">
                 <h6>$9</h6>
                 <p>Per Pickup</p>
             </div>
-            <div class="whats-include">
+            <div className="whats-include">
                 <h6>whats include:</h6>
 
-                <div class="include-items">
+                <div className="include-items">
                     <p>
                         <img src={rightsign.src}/>
                         Schedule a pickup anytime for $9
@@ -78,24 +78,24 @@ const Membership = () => {
                     </p>
                 </div>
             </div>
-            <div class="button">
-                <a href="" class="common-btn">
+            <div className="button">
+                <a href="" className="common-btn">
                     Pay $9 Each Time
                 </a>
             </div>
         </div>
-        <div class=" membership-card">
-            <div class="trial">
+        <div className=" membership-card">
+            <div className="trial">
                 <span>Free 7-day trial</span>
             </div>
-            <div class="number-wrap">
+            <div className="number-wrap">
                 <h6>$19</h6>
                 <p>Monthly</p>
             </div>
-            <div class="whats-include">
+            <div className="whats-include">
                 <h6>whats include:</h6>
 
-                <div class="include-items">
+                <div className="include-items">
                     <p>
                         <img src={rightsign.src}/>
                         Unlimited pickups!
@@ -114,26 +114,26 @@ const Membership = () => {
                     </p>
                 </div>
             </div>
-            <div class="button">
-                <a href="" class="common-btn">
+            <div className="button">
+                <a href="" className="common-btn">
                    Start Free Trial
                 </a>
             </div>
         </div>
-        <div class=" membership-card">
-            <div class="trial trial-two">
+        <div className=" membership-card">
+            <div className="trial trial-two">
                 <span>Free 7-day trial</span>
             </div>
-            <img src={star.src} class="starsvg"/>
+            <img src={star.src} className="starsvg"/>
 
-            <div class="number-wrap">
+            <div className="number-wrap">
                 <h6>$99</h6>
-                <p class="">Annually</p>
+                <p className="">Annually</p>
             </div>
-            <div class="whats-include">
+            <div className="whats-include">
                 <h6>whats include:</h6>
 
-                <div class="include-items">
+                <div className="include-items">
                     <p>
                         <img src={rightsign.src}/>
                         Unlimited pickups!
@@ -156,8 +156,8 @@ const Membership = () => {
                     </p>
                 </div>
             </div>
-            <div class="button thirdbtn">
-                <a href="" class="common-btn">
+            <div className="button thirdbtn">
+                <a href="" className="common-btn">
                     Start Free Trial
                 </a>
             </div>

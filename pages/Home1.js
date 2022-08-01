@@ -331,7 +331,7 @@ console.log(filtered,"this is filtered")
                   onChange={changeBt}
                   autoComplete='off'
                   
-                  onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
+                  onKeyPress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
                 />
                 <p>Days</p>
               </div>
