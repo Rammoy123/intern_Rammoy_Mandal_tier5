@@ -36,6 +36,21 @@ const Shopping = () => {
       pathname: '/Home1'
     })
   }
+  const handleBar1 = e => {
+    e.preventDefault()
+    // router.push( "/component/Testing2"
+    // )
+    console.log(e, 'eeeeeeeeeeee')
+    router.push({
+      pathname: '/Demo',
+      query: {
+        Day: router.query.Day,
+        Time: router.query.Time,
+        slug: router.query.slug
+      }
+    })
+  }
+
 
   return (
     <>
@@ -88,8 +103,8 @@ const Shopping = () => {
               <h5>Wasn’t that easy?</h5>
               <p>
                 Browse more to enjoy your next shopping experience with{' '}
-                {router.query.Brand != 'Other' ? (
-                  <span> {router.query.Brand} </span>
+                {onlyBrand.brand != 'Other' ? (
+                  <span> {onlyBrand.brand} </span>
                 ) : (
                   <span> us ! </span>
                 )}
@@ -110,7 +125,7 @@ const Shopping = () => {
 
             <div style={{ textAlign: 'center', marginTop: '20px' }}>
               <a
-                onClick={handleBar}
+                onClick={handleBar1}
                 style={{
                   cursor: 'pointer',
                   color: '#8755DE',

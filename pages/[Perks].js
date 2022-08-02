@@ -206,7 +206,7 @@ query:{   slug: onlyBrand.Slug,
               {onlyBrand.Perks &&
                 db.map(arr => {
                   if (onlyBrand.Perks == arr.name) {
-                    console.log(onlyBrand.Perks, 'inside everything')
+                  
 
                     return (
                       <img
@@ -287,7 +287,7 @@ query:{   slug: onlyBrand.Slug,
            
 
 
-            <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handleFigma} className="com-button parkbtn">
+            <a style={{textDecoration:'none',color:'white',cursor:'pointer',marginTop:'0px'}} onClick={handleFigma} className="com-button parkbtn">
                     returnQueen Customer Experience <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
                 <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handleBar} className="com-button parkbtn">
@@ -296,6 +296,28 @@ query:{   slug: onlyBrand.Slug,
                 <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handlePdf} className="com-button parkbtn">
                     See your perks <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
+                <div style={{ textAlign: 'center', marginTop: '20px',paddingBottom:'15px' }}>
+              <a
+                onClick={(e)=> {
+                  
+                e.preventDefault()
+                router.push({
+                  pathname: '/Home1'
+                })
+              }}
+                style={{
+                  cursor: 'pointer',
+                  color: '#8755DE',
+                  paddingBottom: '5px',
+                  borderBottom: '2px solid',
+                  fontSize: '18px',
+                  zIndex:1000
+                }}
+              >
+                {' '}
+                End Demo{' '}
+              </a>
+            </div>
             
                 
 
@@ -321,26 +343,7 @@ query:{   slug: onlyBrand.Slug,
 
             {/* ........... */}
           </div>
-          <div style={{ textAlign: 'center', marginTop: '20px',paddingBottom:'15px' }}>
-              <a
-                onClick={(e)=>e => {
-                e.preventDefault()
-                router.push({
-                  pathname: '/Home1'
-                })
-              }}
-                style={{
-                  cursor: 'pointer',
-                  color: '#8755DE',
-                  paddingBottom: '5px',
-                  borderBottom: '2px solid',
-                  fontSize: '18px'
-                }}
-              >
-                {' '}
-                End Demo{' '}
-              </a>
-            </div>
+     
         </div>
       </section>
     </>

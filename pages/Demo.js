@@ -28,6 +28,24 @@ if((router.query.slug) &&(router.query.returnDay) &&(router.query.IdealInInvento
   )
       }
 
+      else if((router.query.slug) && (router.query.Day) && (router.query.Time)){
+
+        e.preventDefault()
+        console.log('eeeee')
+        // router.push( "/component/Testing2"
+        // )
+    
+        router.push({
+          pathname: '/Shopping',
+          query: {
+            Day: router.query.Day,
+            Time: router.query.Time,
+            slug: router.query.slug
+          }
+        })
+
+      }
+
       else{
         router.push({
           pathname: '/[Perks].js',

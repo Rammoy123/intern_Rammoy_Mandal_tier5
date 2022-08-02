@@ -13,10 +13,12 @@ import $ from 'jquery'
 const Schedule = () => {
   const [inputValue, setInputValue] = useState({
     order: '',
-    chooseItem: '',
+    chooseItems: [],
     day: '',
     time: '',
-    contactInfo: ''
+    contactInfo: '',
+    fee:''
+
   })
   const [onlyBrand,setOnlyBrand]=useState({})
 
@@ -51,15 +53,79 @@ const Schedule = () => {
       }
     })
   }
+  // const [checked,setChecked]=useState(true)
+  const [value1,setValue]=useState()
 
   const changeBt = e => {
-    console.log(e.target.name, 'valueee')
+    if(e.target.name=="chooseItems"){
+    
+    const { value, checked } = e.target;
+    
+    const { chooseItems } = inputValue;
 
-    const { name, value } = e.target
+    console.log(`${value} is ${checked} ${name}`);
+
+    console.log(e.target.value, 'valueee')
+    // setChecked(!checked)
+    // if(!checked){
+    //   setValue(e.target.value)
+
+    // }
+    console.log(checked)
+
+    
+
+    if (checked) {
+      setInputValue({
+        ...inputValue,
+        chooseItems: [...chooseItems, value],
+       
+      });
+    }
+    else {
+      setInputValue({
+        ...inputValue,
+        chooseItems:chooseItems .filter((e) => e !== value),
+     
+      });
+    }
+  }
+  // else if(e.target.name=='time' ){
+  //   let { name, value } = e.target
+  //   console.log(name,"my name")
+
+  // setInputValue({
+  //   ...inputValue,
+  //   [name]:value
+    
+
+    
+  // })
+
+  // }
+    
+
+
+    else if (e.target.name=='order' ||e.target.name=='time'||e.target.name=='day'||e.target.name=='contactInfo' ||e.target.name=='fee' ){
+      let { name, value } = e.target
+      console.log(name,"my name")
+
     setInputValue({
       ...inputValue,
-      [name]: value
+      [name]:value
+      
+
+      
     })
+  }
+
+    // const { name, value } = e.target
+    // setInputValue({
+    //   ...inputValue,
+    //   chooseItems:value1,
+
+    //   [name]: value
+    // })
     // if( (inputValue.chooseItem) ){
     //   $(".custom-radio .radio-section .radio-box .labelif").css(
     //    "background","rgba(133, 84, 220, 0.1)"
@@ -72,10 +138,11 @@ const Schedule = () => {
     //     )
     // }
   }
+  
 
   const onMember=e=>{
     e.preventDefault()
-    console.log('eeeee')
+    console.log(e)
     // router.push( "/component/Testing2"
     // )
 
@@ -171,10 +238,13 @@ const Schedule = () => {
                             <p>Choose Items</p>
                             <div  className="radio-section">
                                 <div  className="radio-box">
-                                    <input type="checkbox" name="choose-items"   value='LoremIpsum1'
-      checked={inputValue.chooseItem == 'LoremIpsum1'}
+                                {/* efaultChecked={checked} */}
+                                    <input type="checkbox" name="chooseItems"    value="imsum1"
+      
       onChange={changeBt} id="item1" required/>
-                                    <label htmlFor="item1">
+
+                                    <label className='checkI' htmlFor="item1">
+                                    
                                         <div  className="radio-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                                                 <path d="M26.8792 24.7393L25.5394 7.85754C25.4559 6.76992 24.5361 5.91791 23.4453 5.91791H20.7991V5.79896C20.7991 2.60139 18.1977 0 15.0001 0C11.8025 0 9.20114 2.60139 9.20114 5.79896V5.91791H6.55493C5.46409 5.91791 4.54422 6.76986 4.46102 7.85525L3.12086 24.7416C3.01715 26.0937 3.4862 27.4397 4.40764 28.4345C5.32909 29.4294 6.63532 30 7.99135 30H22.0088C23.3648 30 24.6711 29.4294 25.5926 28.4345C26.514 27.4397 26.983 26.0937 26.8792 24.7393ZM10.9584 5.79896C10.9584 3.57035 12.7715 1.75723 15.0001 1.75723C17.2287 1.75723 19.0418 3.57041 19.0418 5.79896V5.91791H10.9584V5.79896ZM24.3033 27.2405C23.7046 27.8868 22.8898 28.2428 22.0088 28.2428H7.99141C7.1104 28.2428 6.29559 27.8868 5.69688 27.2405C5.09823 26.5942 4.80561 25.7544 4.87288 24.8783L6.21292 7.99189C6.22651 7.81424 6.37674 7.67514 6.55493 7.67514H9.20114V9.8393C9.20114 10.3245 9.59454 10.7179 10.0798 10.7179C10.565 10.7179 10.9584 10.3245 10.9584 9.8393V7.67514H19.0418V9.8393C19.0418 10.3245 19.4352 10.7179 19.9205 10.7179C20.4057 10.7179 20.7991 10.3245 20.7991 9.8393V7.67514H23.4453C23.6235 7.67514 23.7737 7.8143 23.7875 7.99424L25.1273 24.876C25.1947 25.7544 24.902 26.5941 24.3033 27.2405Z" fill="#8755DE"/>
@@ -185,12 +255,15 @@ const Schedule = () => {
                                             <p>Item 1</p>
                                             <p><span>Lorem Ipsum</span></p>
                                         </div>
+                                        
                                     </label>
                                 </div>
+                                
                                 <div  className="radio-box">
-                                    <input type="checkbox" name="choose-items" id="item2"      value='LoremIpsum2'
+                                
+                                    <input type="checkbox" name="chooseItems" id="item2"      value='LoremIpsum2'
       onChange={changeBt}
-      checked={inputValue.chooseItem == 'LoremIpsum2'} required/>
+    />
                                     <label htmlFor="item2">
                                         <div  className="radio-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -205,9 +278,9 @@ const Schedule = () => {
                                     </label>
                                 </div>
                                 <div  className="radio-box">
-                                    <input type="checkbox" name="choose-items" id="item3"        value='LoremIpsum3'
+                                    <input type="checkbox" name="chooseItems" id="item3"        value='LoremIpsum3'
        onChange={changeBt}
-      checked={inputValue.chooseItem == 'LoremIpsum3'} required/>
+      required/>
                                     <label htmlFor="item3">
                                         <div  className="radio-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
@@ -463,14 +536,16 @@ const Schedule = () => {
                 </div>
               </div>
               <hr className="hr2" />
-              <div className="pickup-fee">
+              <div className="pickup-fee" onChange={changeBt}>
                             <div className="pickup-content">
-                                <input type="radio" name="pickup" id="pickup1" required/>
+                                <input type="radio" name="fee" id="pickup1"   value='$9'
+                    checked={inputValue.fee == '$9'} required/>
                                 <label htmlFor="pickup1">$9 
                                     <span className="pickup-span">(one time pickup fee)</span></label>
                             </div>
                              <div className="pickup-content pickupcontent-two">
-                                <input type="radio" name="pickup" id="pickup2" required/>
+                                <input type="radio" name="fee" id="pickup2"  value='FreeWithMembership'
+                    checked={inputValue.fee == 'FreeWithMembership'} required/>
                                 <label htmlFor="pickup2">Free with your ReturnQueen <span className="membership-text">membership</span> 
                                    <span className="pickup-span">(For membership options tap <span onClick={onMember} className="here"> here</span>)</span> </label>
                             </div>
@@ -478,10 +553,11 @@ const Schedule = () => {
 
 
 
-              {inputValue.chooseItem &&
+              {(inputValue.chooseItems.length>0) &&
               inputValue.contactInfo &&
               inputValue.day &&
-              inputValue.time &&
+              inputValue.time && 
+             inputValue.fee &&
               inputValue.order ? (
                 <a
                   onClick={handleBar}

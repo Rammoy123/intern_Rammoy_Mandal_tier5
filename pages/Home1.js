@@ -15,7 +15,7 @@ const Home1 = () => {
   const focus = useRef()
 
   const [myDb, setmyDb] = useState(db)
-  console.log(db, 'db')
+  
 
   const [inputValue, setInputValue] = useState({
     brand: '',
@@ -28,7 +28,7 @@ const Home1 = () => {
   useEffect(() => {
     function handleClickOutside (event) {
       if (focus.current && !focus.current.contains(event.target)) {
-        console.log($('.hide').css('display', 'none'))
+       
         $('.hide').css('display', 'none')
         $('#myInputautocomplete-list').css('height','0vh')
         // myInputautocomplete-list
@@ -53,7 +53,7 @@ const Home1 = () => {
         am1 = am
       }
     })
-    console.log(am1, 'am111')
+  
     //function to arrange alphabitically
 
     const myData1 = db1
@@ -104,7 +104,7 @@ else{
 
 
   const changeBt = e => {
-    console.log(e.target.name, 'valueee')
+   
 
     const { name, value } = e.target
     setInputValue({
@@ -120,9 +120,9 @@ else{
 
   const handleClick = e => {
 const filtered=db.filter((arr)=>arr.name==inputValue.brand)
-console.log(filtered,"this is filtered")
 
-    console.log(e, 'click')
+
+    
     e.preventDefault()
     // {brand:inputValue.brand,returnDay:inputValue.return1,pickUp:inputValue.return2}
 
@@ -179,41 +179,6 @@ console.log(filtered,"this is filtered")
         <link rel='stylesheet' href='assets/css/animate.css' media='all' />
         <link rel='stylesheet' href='assets/css/main.css' media='all' />
 
-        {/* <link
-          rel='preload'
-          href='fonts/Gilroy-Medium.otf'
-          as='font'
-          type='font/otf'
-          crossorigin
-        />
-        <link
-          rel='preload'
-          href='fonts/Gilroy-Bold.otf'
-          as='font'
-          type='font/otf'
-          crossorigin
-        />
-        <link
-          rel='preload'
-          href='fonts/Gilroy-SemiBold.otf'
-          as='font'
-          type='font/otf'
-          crossorigin
-        />
-        <link
-          rel='preload'
-          href='fonts/Gilroy-Heavy.otf'
-          as='font'
-          type='font/otf'
-          crossorigin
-        />
-        <link
-          rel='preload'
-          href='fonts/Gilroy-Light.otf'
-          as='font'
-          type='font/otf'
-          crossorigin
-        /> */}
 
         <link
           href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap'
@@ -300,7 +265,7 @@ console.log(filtered,"this is filtered")
                                 brand: e.target.innerText
                               })
 
-                              console.log($('.hide'))
+                              
                               $('.hide').css('display', 'none')
                               $('#myInputautocomplete-list').css('height','0vh')
                             }}
@@ -331,7 +296,7 @@ console.log(filtered,"this is filtered")
                   onChange={changeBt}
                   autoComplete='off'
                   
-                  onKeyPress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
+                  // onKeyPress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
                 />
                 <p>Days</p>
               </div>

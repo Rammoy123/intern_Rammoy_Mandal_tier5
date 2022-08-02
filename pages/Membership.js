@@ -29,18 +29,18 @@ const Membership = () => {
   <>
 
 
-<section className="memebrship">
+<section className={style.memebrship}>
 
-<div className="text-center">
+<div  style={{textAlign:"center"}}>
     <img src={LogoOrg.src}/>
 </div>
 
 
 
 
-<div className="membership-plans">
-    <div className="backsection">
-        <div className="backbutton">
+<div className={style.membershipPlans}>
+    <div className={style.backsection}>
+        <div className={style.button}>
             <a style={{cursor:'pointer'}} onClick={handleBar}>
                 <img src={vector.src}/>
                 Back
@@ -50,16 +50,16 @@ const Membership = () => {
             Membership Plans
         </h1>
     </div>
-    <div className="membership-container">
-        <div className=" membership-card">
-            <div className="number-wrap">
+    <div className={style.membershipContainer}>
+        <div className={ style.membershipCard}>
+            <div className={style.numberWrap}>
                 <h6>$9</h6>
                 <p>Per Pickup</p>
             </div>
-            <div className="whats-include">
+            <div className={style.whatsInclude}>
                 <h6>whats include:</h6>
 
-                <div className="include-items">
+                <div className={style.includeItems}>
                     <p>
                         <img src={rightsign.src}/>
                         Schedule a pickup anytime for $9
@@ -78,24 +78,24 @@ const Membership = () => {
                     </p>
                 </div>
             </div>
-            <div className="button">
-                <a href="" className="common-btn">
+            <div className={style.button}>
+                <a href="" className={style.commonBtn}>
                     Pay $9 Each Time
                 </a>
             </div>
         </div>
-        <div className=" membership-card">
-            <div className="trial">
+        <div className={style.membershipCard}>
+            <div className={style.trial}>
                 <span>Free 7-day trial</span>
             </div>
-            <div className="number-wrap">
+            <div className={style.numberWrap}>
                 <h6>$19</h6>
                 <p>Monthly</p>
             </div>
-            <div className="whats-include">
+            <div className={style.whatsInclude}>
                 <h6>whats include:</h6>
 
-                <div className="include-items">
+                <div className={style.includeItems}>
                     <p>
                         <img src={rightsign.src}/>
                         Unlimited pickups!
@@ -114,26 +114,27 @@ const Membership = () => {
                     </p>
                 </div>
             </div>
-            <div className="button">
-                <a href="" className="common-btn">
+            <div className={style.button}>
+                <a href="" className={style.commonBtn}>
                    Start Free Trial
                 </a>
             </div>
         </div>
-        <div className=" membership-card">
-            <div className="trial trial-two">
+        <div className={style.membershipCard}>
+            <div className= { [style.trial, style.trialTwo].join(' ')}>
+          
                 <span>Free 7-day trial</span>
             </div>
-            <img src={star.src} className="starsvg"/>
+            <img src={star.src} className={style.starsvg}/>
 
-            <div className="number-wrap">
+            <div className={style.numberWrap}>
                 <h6>$99</h6>
                 <p className="">Annually</p>
             </div>
-            <div className="whats-include">
+            <div className={style.whatsInclude}>
                 <h6>whats include:</h6>
 
-                <div className="include-items">
+                <div className={style.includeItems}>
                     <p>
                         <img src={rightsign.src}/>
                         Unlimited pickups!
@@ -156,8 +157,9 @@ const Membership = () => {
                     </p>
                 </div>
             </div>
-            <div className="button thirdbtn">
-                <a href="" className="common-btn">
+            <div className={ [style.button, style.thirdbtn].join(' ')}>
+         
+                <a href="" className={style.commonBtn}>
                     Start Free Trial
                 </a>
             </div>
