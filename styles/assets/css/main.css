@@ -1203,7 +1203,7 @@ a.com-button.parkbtn{
         }
 
         .custom-radio.time-radio .radio-section .radio-box input[type="radio"]:checked + label{
-            background: rgba(135, 85, 222, 0.05);
+          background: rgba(133, 84, 220, 0.1);
             border: 1px solid #8755DE;
         }
         .custom-radio.time-radio .radio-section .radio-box input[type="radio"]:checked + label p{
@@ -1298,12 +1298,12 @@ a.com-button.parkbtn{
         .delivery-radio [type="radio"]:checked + label:after,
         .delivery-radio [type="radio"]:not(:checked) + label:after {
             content: '';
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             background: #8554DC;
             position: absolute;
-            top: 2.5px;
-            left: 2.5px;
+            top: 2.4px;
+            left: 2.2px;
             border-radius: 100%;
             -webkit-transition: all 0.2s ease;
             transition: all 0.2s ease;
@@ -1371,12 +1371,12 @@ a.com-button.parkbtn{
         .pickup-fee [type="radio"]:checked + label:after,
         .pickup-fee [type="radio"]:not(:checked) + label:after {
             content: '';
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             background: #8554DC;
             position: absolute;
-            top: 12.6px;
-            left: 2px;
+            top: 12.49px;
+            left: 2.2px;
             border-radius: 100%;
             -webkit-transition: all 0.2s ease;
             transition: all 0.2s ease;

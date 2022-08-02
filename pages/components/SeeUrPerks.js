@@ -121,7 +121,7 @@ const SeeUrPerks = () => {
 {/* <Page width={1440} height={100000} onLoadSuccess={removeTextLayerOffset}  pageNumber={pageNumber} /> */}
 
 {Array.from(new Array(numPages), (el, index) => (
-        <Page    className="react-pdf__Page__canvas"  key={`page_${index + 1}`} pageNumber={index + 1} />
+        <Page scale={0.5}   className="react-pdf__Page__canvas"  key={`page_${index + 1}`} pageNumber={index + 1} />
       ))}
 
       </Document>

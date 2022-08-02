@@ -24,11 +24,12 @@
 .backsection .backbutton {
     position: absolute;
     bottom: 0;
+    /* background: blue !important; */
 }
 
 .membershipPlans {
     max-width: 1237px;
-    min-height: 457px;
+    min-height: 650px;
     margin:  auto  ;
 }
 
@@ -168,6 +169,7 @@
     text-decoration: none;
     color: #FFFFFF;
 }
+
 
 
 @media (max-width:1399px) {

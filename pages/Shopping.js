@@ -113,8 +113,7 @@ const Shopping = () => {
 
             <a
               style={{
-                background: '#8755DE',
-                cursor: 'pointer',
+              //  background:'transparent',
                 textDecoration: 'none',
                 color: 'white'
               }}
@@ -122,8 +121,19 @@ const Shopping = () => {
             >
               Countinue Shopping
             </a>
+            <a onClick={handleBar1}
+              style={{
+               background:'#8755DE',
+                textDecoration: 'none',
+                color: 'white',
+                cursor:'pointer'
+              }}
+              className='com-button'
+            >
+                returnQueen Customer Experience
+            </a>
 
-            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+            {/* <div style={{ textAlign: 'center', marginTop: '20px' }}>
               <a
                 onClick={handleBar1}
                 style={{
@@ -137,7 +147,8 @@ const Shopping = () => {
                 {' '}
                 Back to Home{' '}
               </a>
-            </div>
+
+            </div> */}
 
             <div style={{ textAlign: 'center', marginTop: '20px',paddingBottom:'15px' }}>
               <a

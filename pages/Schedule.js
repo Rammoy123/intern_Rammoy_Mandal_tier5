@@ -17,7 +17,8 @@ const Schedule = () => {
     day: '',
     time: '',
     contactInfo: '',
-    fee:''
+    fee:'',
+    checkedIf:''
 
   })
   const [onlyBrand,setOnlyBrand]=useState({})
@@ -32,6 +33,14 @@ const Schedule = () => {
     const filtered=db.filter((arr)=>arr.slug==data.slug)
     if(filtered.length>0){
     setOnlyBrand({ brand: filtered[0].name })
+
+
+
+    }
+    if(data.chooseItems){
+      // console.log(data,"mydata")
+      setInputValue({...data})
+    
     }
     
     }
@@ -142,18 +151,64 @@ const Schedule = () => {
 
   const onMember=e=>{
     e.preventDefault()
-    console.log(e)
+    console.log(inputValue.chooseItems,"router")
+    // order: '',
+    // chooseItems: [],
+    // day: '',
+    // time: '',
+    // contactInfo: '',
+    // fee:''
+
+    
     // router.push( "/component/Testing2"
     // )
 
     router.push({
       pathname: '/Membership',
+
+
+
       query: {
         Day: inputValue.day,
         Time: inputValue.time,
-        slug: router.query.slug
+        slug: router.query.slug,
+        
+        order:inputValue.order,
+        chooseItems:inputValue.chooseItems,
+        day:inputValue.day,
+        time:inputValue.time,
+        contactInfo:inputValue.contactInfo,
+        fee:inputValue.fee
+
+
+
+
       }
     })
+    const myObj={}
+    Object.entries(inputValue).forEach(([key, value]) => {
+     
+      
+      if(value.length>0)
+     
+      
+      {
+        Object.assign(myObj,{[key]:value})
+
+
+      }
+    
+  });
+
+  // Object.keys(inputValue).forEach(key => {
+  //   if(inputValue[key]>0){
+
+  //   myObj.append(key, inputValue[key])
+  //   }
+  // })
+  console.log(myObj,"myobkk")
+
+
 
 
   }
@@ -239,7 +294,7 @@ const Schedule = () => {
                             <div  className="radio-section">
                                 <div  className="radio-box">
                                 {/* efaultChecked={checked} */}
-                                    <input type="checkbox" name="chooseItems"    value="imsum1"
+                                    <input type="checkbox" name="chooseItems"  checked={inputValue.chooseItems.find((arr)=>arr== 'ipsum1') }    value="ipsum1"
       
       onChange={changeBt} id="item1" required/>
 
@@ -261,7 +316,7 @@ const Schedule = () => {
                                 
                                 <div  className="radio-box">
                                 
-                                    <input type="checkbox" name="chooseItems" id="item2"      value='LoremIpsum2'
+                                    <input type="checkbox" name="chooseItems" id="item2" checked={inputValue.chooseItems.find((arr)=>arr== "LoremIpsum2") }     value='LoremIpsum2'
       onChange={changeBt}
     />
                                     <label htmlFor="item2">
@@ -278,7 +333,7 @@ const Schedule = () => {
                                     </label>
                                 </div>
                                 <div  className="radio-box">
-                                    <input type="checkbox" name="chooseItems" id="item3"        value='LoremIpsum3'
+                                    <input type="checkbox" name="chooseItems" id="item3"  checked={inputValue.chooseItems.find((arr)=>arr== "LoremIpsum3") }        value='LoremIpsum3'
        onChange={changeBt}
       required/>
                                     <label htmlFor="item3">

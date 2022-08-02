@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LogoOrg from '../styles/assets/img/Logo.svg'
 
 import rightsign from '../styles/assets/img/rightsign.svg'
@@ -10,17 +10,28 @@ import { useRouter } from 'next/router'
 
 // import style from "../../styles/assets/css/Membership.module.css"
 import style from "../styles/assets/css/Membership.module.css"
+
+
 const Membership = () => {
     const router = useRouter()
 
     const handleBar=e=>{
         e.preventDefault()
+
+
+
         router.push({
             pathname: '/Schedule',
             query: {
             //   Day: inputValue.day,
             //   Time: inputValue.time,
-              slug: router.query.slug
+              slug: router.query.slug,
+              order:router.query.order,
+              chooseItems:router.query.chooseItems,
+              day:router.query.day,
+              time:router.query.time,
+              contactInfo:router.query.contactInfo,
+              fee:router.query.fee
             }
           })
 
@@ -40,7 +51,7 @@ const Membership = () => {
 
 <div className={style.membershipPlans}>
     <div className={style.backsection}>
-        <div className={style.button}>
+        <div className={style.backbutton}>
             <a style={{cursor:'pointer'}} onClick={handleBar}>
                 <img src={vector.src}/>
                 Back
