@@ -79,14 +79,15 @@ const Shopping = () => {
                       <img
                         key={arr.id}
                         src={arr.img_thumbnail}
-                        width='135'
+                        className="company-logo"
                         alt='yourlogo'
                       />
                     )
                   }
                 })}
-              <span></span>
+                <div className="black-logo-wrap">
               <img src={blackLogo.src} className='blacklogo' alt='logo' />
+            </div>
             </div>
 
             <div className='all-set'>
@@ -115,7 +116,10 @@ const Shopping = () => {
               style={{
               //  background:'transparent',
                 textDecoration: 'none',
-                color: 'white'
+                background: 'white',
+                color:'#757575',
+                border: '1px solid #C6C6C6',
+                marginTop:'5px'
               }}
               className='com-button'
             >
@@ -126,11 +130,12 @@ const Shopping = () => {
                background:'#8755DE',
                 textDecoration: 'none',
                 color: 'white',
-                cursor:'pointer'
+                cursor:'pointer',
+                marginTop:'22px'
               }}
               className='com-button'
             >
-                returnQueen Customer Experience
+                ReturnQueen Customer Experience
             </a>
 
             {/* <div style={{ textAlign: 'center', marginTop: '20px' }}>
@@ -150,7 +155,7 @@ const Shopping = () => {
 
             </div> */}
 
-            <div style={{ textAlign: 'center', marginTop: '20px',paddingBottom:'15px' }}>
+            <div style={{ textAlign: 'center', marginTop: '14px',paddingBottom:'15px' }}>
               <a
                 onClick={handleBar}
                 style={{

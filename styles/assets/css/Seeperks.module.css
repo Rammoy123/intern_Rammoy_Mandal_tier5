@@ -8,11 +8,23 @@ height: 32px;
 z-index: 5;
 overflow-x: hidden;
 overflow-y: hidden;
+display: flex;
+align-items: center;
 }
 .child{
 position: relative;
 left:92px
 
+}
+ .a{
+  cursor: pointer;
+  font-size:15px;
+  
+  font-weight:500;
+  color: #8755de;
+  position: relative;
+  cursor:pointer;
+  text-decoration: none;
 }
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
@@ -23,18 +35,45 @@ left:92px
     box-sizing: border-box;
     overflow: hidden;
   }
+  .sign{
+ font-size:20px;
+ color:#8755de;
+ z-index: 5;
+ padding-right:0px;
+ position:absolute;
+ left:-15px;
+ bottom:0px;
+ text-decoration: none;
+
+  }
   .inner{
     /* overflow: hidden;
     height: 90vh; */
     overflow-y: scroll;
     overflow-x: hidden;
     height: 90vh;
+    /* visibility:hidden */
   }
   .inner1{
      overflow: hidden;
     height: 90vh;
 
   }
+  .loadingParent{
+
+    color: white;
+    /* background: red; */
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
+
+
+
 
   /* .inner Document .inner1{
     width:100%

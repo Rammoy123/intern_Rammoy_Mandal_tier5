@@ -25,6 +25,7 @@ const Schedule = () => {
 
   const router = useRouter()
   console.log(router.query)
+  const [array,setArray]=useState([])
 
   useEffect(()=>{
     const set = data => {
@@ -37,11 +38,43 @@ const Schedule = () => {
 
 
     }
-    if(data.chooseItems){
+    if(data.Time||data.chooseItems||data.order||data.day||data.contactInfo||data.fee){
+      console.log(data,"i am dada")
+      const array=[]
+      
       // console.log(data,"mydata")
-      setInputValue({...data})
+      if((typeof(data.chooseItems)=="string") && (data.chooseItems.length>1)){
+        console.log("lolll iam string")
+      array=data.chooseItems.split()
+      console.log(array,"klll")
+
+      if(array.length==1)
+      {
+        console.log("lolll iam array")
+        console.log(array,"meee")
+        array=data.chooseItems.split(',')
+      }
+      console.log(array,"llll")
+
+     
+    //  array=array.push()
+     console.log(array,"logArray")
+     
+      setInputValue({...data,
+      chooseItems:array})
     
     }
+    else if ((typeof(data.chooseItems)=="string") && (data.chooseItems.length<=1)){
+      setInputValue({...data,
+        chooseItems:array})
+
+    }
+    else{
+      setInputValue({...data
+        })
+
+    }
+  }
     
     }
     set(router.query)
@@ -213,7 +246,7 @@ const Schedule = () => {
 
   }
 
-    console.log(inputValue, 'input Value')
+    console.log(inputValue.chooseItems, 'input Value')
   return (
     <>
       <section className='main-wrpper'>
@@ -244,17 +277,19 @@ const Schedule = () => {
                           <img
                             key={arr.id}
                             src={arr.img_thumbnail}
-                            width='135'
+                           
                             alt='yourlogo'
+                            className="company-logo"
                           />
                         )
                       }
                     })}
                 </a>
-                <span></span>
+                <div className="black-logo-wrap">
                 <a>
                   <img src={blackLogo.src} className='blacklogo' alt='logo' />
                 </a>
+                </div>
               </div>
             </div>
 

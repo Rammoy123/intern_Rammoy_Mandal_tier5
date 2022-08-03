@@ -486,6 +486,9 @@ ul li{
 .site-logo{
   margin-bottom: 115px;
 }
+.for-home{
+  margin-bottom: 90px;
+}
 
 a.com-button {
   display: flex;
@@ -790,6 +793,22 @@ a.com-button.parkbtn{
     /* left: 50%; */
     left:45%;
     transform: translateX(-50%, -50%);
+}
+.logo-container .black-logo-wrap {
+  align-self: center;
+}
+.company-logo {
+  width: 130px
+}
+.logo-container .black-logo-wrap::before {
+  content: " ";
+  background-color: #000;
+  position: absolute;
+  width: 1.5px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .button-container {
@@ -1557,7 +1576,7 @@ a.com-button.parkbtn{
   }
 
   .site-logo {
-    margin-bottom: 35px;
+    /* margin-bottom: 0px; */
   }
   .main-wrp-continner p {
     padding: 5px 0px 28px;
@@ -1668,6 +1687,9 @@ a.com-button {
 
 a.com-button {
   padding: 20px 10px;
+}
+.pickup-fee {
+  grid-gap: 24px;
 }
 
 }

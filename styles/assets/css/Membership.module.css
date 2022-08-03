@@ -203,7 +203,8 @@
         font-size: 24px;
     }
     .backsection .backbutton {
-        bottom: 20px;
+       
+        bottom: 10px;
     }
     
 }

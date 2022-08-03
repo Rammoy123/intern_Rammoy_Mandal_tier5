@@ -12,14 +12,17 @@ const ReturnPickup = () => {
   const [onlyBrand,setOnlyBrand]=useState({})
 
   const router = useRouter()
+  
   useEffect(()=>{
     const set = data => {
+      console.log(data,"i am data")
       
     
     const filtered=db.filter((arr)=>arr.slug==data.slug)
     if(filtered.length>0){
     setOnlyBrand({ brand: filtered[0].name })
     }
+    
     }
     set(router.query)
   },[router.query])
@@ -43,15 +46,17 @@ const ReturnPickup = () => {
                       <img
                         key={arr.id}
                         src={arr.img_thumbnail}
-                        width='135'
+      
                         alt='yourlogo'
+                        className="company-logo"
                       />
                     )
                   }
                 })}
+                <div className="black-logo-wrap">
               
-              <span></span>
               <img src={blackLogo.src} className='blacklogo' alt='logo' />
+            </div>
             </div>
 
             <div className='paragraph'>

@@ -18,9 +18,9 @@ const Home1 = () => {
   
 
   const [inputValue, setInputValue] = useState({
-    brand: '',
-    return1: '',
-    return2: ''
+    brand: ''
+    // return1: '',
+    // return2: ''
   })
   const [inputValue1, setInputValue1] = useState()
   const [value, setValue] = useState()
@@ -128,10 +128,11 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
 
     router.push({
       pathname: '/[Perks].js',
-      query: { slug: filtered[0].slug,  returnDay: inputValue.return1,
-        IdealInInventory : inputValue.return2 }
+      query: { slug: filtered[0].slug }
     })
   }
+  // query: { slug: filtered[0].slug,  returnDay: inputValue.return1,
+  //   IdealInInventory : inputValue.return2 }
   const [handFocus, setHandFocus] = useState(false)
 
 
@@ -139,7 +140,7 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
 
   useEffect(()=>{
     if(handFocus==true){
-      $('#myInputautocomplete-list').css('height','35vh')
+      $('#myInputautocomplete-list').css('height','25vh')
     }
 
 
@@ -210,7 +211,7 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
                   pathname: '/Home1'
                 })
               }}
-              className='site-logo'
+              className='site-logo for-home'
             >
               <img src={logo.src} alt='logo' />
             </a>
@@ -283,7 +284,7 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
 
               {/* ..............................move to next............... */}
 
-              <div className='input-form'>
+              {/* <div className='input-form'>
                 <label>How many days is your current return policy?</label>
                 <input
                   type='text'
@@ -296,7 +297,7 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
                   onChange={changeBt}
                   autoComplete='off'
                   
-                  // onKeyPress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false"
+
                 />
                 <p>Days</p>
               </div>
@@ -318,15 +319,16 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
                  
                 />
                 <p>Days</p>
-              </div>
+              </div> */}
 
               {/* ...................move to next.......................... */}
-              {((afterData.find(arrAmi => arrAmi.name == inputValue.brand)) &&(inputValue.return1)&&(inputValue.return2)) ? (
+              {(afterData.find(arrAmi => arrAmi.name == inputValue.brand)) ? (
                 <a
                   onClick={handleClick}
                   style={{
                     background: '#8755DE',
                     cursor: 'pointer',
+                    marginTop:'0px'
                    
                   }}
                   className='com-button'
@@ -336,7 +338,7 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
                 </a>
               ) : (
                 
-                <a className='com-button' >
+                <a style={{marginTop:'0px'}} className='com-button' >
                   Next Step{' '}
                   <img className='arrowsvg' src={Arrow.src} alt='arrow' />
                 </a>

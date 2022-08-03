@@ -71,7 +71,7 @@ if((router.query.slug) &&(router.query.returnDay) &&(router.query.IdealInInvento
 <div className={style.child}>
 
 
-<a onClick={handleBar1}>  <BiChevronLeft style={{fontSize:"25px",color:"black",zIndex: 5}}/> </a>
+<a  className={style.a} onClick={handleBar1}>  <BiChevronLeft className={style.sign} style={{bottom:"0px"}}/>Back </a>
 
 
 </div>

@@ -33,23 +33,23 @@ const Perks = () => {
   const router = useRouter()
   console.log(router.query, 'query123')
 
-  const [inputValue, setInputValue] = useState({
-    return1: '',
-    return2: ''
-  })
+  // const [inputValue, setInputValue] = useState({
+  //   return1: '',
+  //   return2: ''
+  // })
   
 
-  const changeBt = e => {
-    console.log(e.target.name, 'valueee')
+  // const changeBt = e => {
+  //   console.log(e.target.name, 'valueee')
 
-    const { name, value } = e.target
-    setInputValue({
-      ...inputValue,
-      [name]: value
-    })
-  }
+  //   const { name, value } = e.target
+  //   setInputValue({
+  //     ...inputValue,
+  //     [name]: value
+  //   })
+  // }
 
-  console.log(inputValue, 'inputtttt')
+  
 
   useEffect(() => {
     const set = data => {
@@ -84,29 +84,37 @@ const Perks = () => {
     e.preventDefault()
     console.log(router.query,"queryyyy")
 
-    if((inputValue.return1)&& (inputValue.return2)){
+       router.push({
+      pathname: '/Step3',
+      query: {
+        slug: onlyBrand.Slug,
+    
+      }
+    })
+
+  //   if((inputValue.return1)&& (inputValue.return2)){
     
 
-    router.push({
-      pathname: '/ReturnPickup',
-      query: {
-        slug: onlyBrand.Slug,
-        returnDay: inputValue.return1,
-        IdealInInventory: inputValue.return2
-      }
-    })
-  }
-  else{
-    router.push({
-      pathname: '/ReturnPickup',
-      query: {
-        slug: onlyBrand.Slug,
-        returnDay:router.query.returnDay ,
-        IdealInInventory: router.query.IdealInInventory
-      }
-    })
+  //   router.push({
+  //     pathname: '/ReturnPickup',
+  //     query: {
+  //       slug: onlyBrand.Slug,
+  //       returnDay: inputValue.return1,
+  //       IdealInInventory: inputValue.return2
+  //     }
+  //   })
+  // }
+  // else{
+  //   router.push({
+  //     pathname: '/ReturnPickup',
+  //     query: {
+  //       slug: onlyBrand.Slug,
+  //       returnDay:router.query.returnDay ,
+  //       IdealInInventory: router.query.IdealInInventory
+  //     }
+  //   })
 
-  }
+  // }
 
   }
   const handlePdf=e=>{
@@ -175,9 +183,9 @@ query:{   slug: onlyBrand.Slug,
   return (
     <>
       <section className='main-wrpper'>
-        {console.log(onlyBrand.Perks, 'lolll')}
+  
 
-        {/* <h1> {data.Perks} </h1> */}
+     
         <div className='main-wrp-mobile'>
           <div className='main-wrp-mobile-inner'>
             <img src={iphone12.src} alt='iPhone-12' />
@@ -202,7 +210,7 @@ query:{   slug: onlyBrand.Slug,
             </a>
 
             <div className='logo-container'>
-            {console.log(onlyBrand,"LOLLL")}
+            
               {onlyBrand.Perks &&
                 db.map(arr => {
                   if (onlyBrand.Perks == arr.name) {
@@ -212,19 +220,23 @@ query:{   slug: onlyBrand.Slug,
                       <img
                         key={arr.id}
                         src={arr.img_thumbnail}
-                        width='135'
+                        // width='135'
                         alt='yourlogo'
+                        className="company-logo"
                       />
                     )
                   }
                 })}
 
-              <span></span>
+
+              {/* <span></span> */}
+              <div className="black-logo-wrap">
               <img src={blackLogo.src} className='blacklogo' alt='logo' />
             </div>
-
+            </div>
+{/* .....move to ...step3..... */}
             
-  {   !((router.query.slug)&&(router.query.returnDay)&&(router.query.IdealInInventory)) && (<div>
+  {/* {   !((router.query.slug)&&(router.query.returnDay)&&(router.query.IdealInInventory)) && (<div>
             <div className='input-form'>
               <label>How many days is your current return policy?</label>
               <input
@@ -261,7 +273,8 @@ query:{   slug: onlyBrand.Slug,
               <p>Days</p>
             </div>
             </div>)
-  }
+  } */}
+  {/* .....move to ...step3..... */}
 
             {/* <div className='button-container'>
     
@@ -287,13 +300,13 @@ query:{   slug: onlyBrand.Slug,
            
 
 
-            <a style={{textDecoration:'none',color:'white',cursor:'pointer',marginTop:'0px'}} onClick={handleFigma} className="com-button parkbtn">
-                    returnQueen Customer Experience <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
+            <a style={{textDecoration:'none',color:'white',cursor:'pointer',marginTop:'20px'}} onClick={handleFigma} className="com-button parkbtn">
+                    ReturnQueen Customer Experience <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
-                <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handleBar} className="com-button parkbtn">
+                <a style={{textDecoration:'none',color:'white',cursor:'pointer',marginTop:'18px'}} onClick={handleBar} className="com-button parkbtn">
                     Your Website With RQ <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
-                <a style={{textDecoration:'none',color:'white',cursor:'pointer'}} onClick={handlePdf} className="com-button parkbtn">
+                <a style={{textDecoration:'none',color:'white',cursor:'pointer',marginTop:'18px'}} onClick={handlePdf} className="com-button parkbtn">
                     See your perks <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
                 <div style={{ textAlign: 'center', marginTop: '20px',paddingBottom:'15px' }}>
