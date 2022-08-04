@@ -15,6 +15,10 @@ const Home1 = () => {
   const focus = useRef()
 
   const [myDb, setmyDb] = useState(db)
+
+
+
+  
   
 
   const [inputValue, setInputValue] = useState({
@@ -232,7 +236,9 @@ const filtered=db.filter((arr)=>arr.name==inputValue.brand)
                   onChange={changeBt}
                   onFocus={e => {
                     setHandFocus(true)
+                    
                   }}
+                
                   required
                 />
 

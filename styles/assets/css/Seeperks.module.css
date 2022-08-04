@@ -52,6 +52,7 @@ left:92px
     overflow-y: scroll;
     overflow-x: hidden;
     height: 90vh;
+    z-index: -5;
     /* visibility:hidden */
   }
   .inner1{
@@ -64,12 +65,18 @@ left:92px
     color: white;
     /* background: red; */
     padding: 15px;
+    z-index: 10000;
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
+   
+  }
+  .spin{
+    z-index: 10000;
+
   }
 
 

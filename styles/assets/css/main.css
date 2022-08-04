@@ -1228,6 +1228,9 @@ a.com-button.parkbtn{
         .custom-radio.time-radio .radio-section .radio-box input[type="radio"]:checked + label p{
             color: #8755DE;
         }
+        .custom-radio.time-radio  .schedule-time-box .radio-box input[type="radio"]:checked + label p{
+          color: #8755DE;
+      }
         
         .custom-radio.time-radio .or-time{
             font-weight: 500;

@@ -324,6 +324,7 @@ query:{   slug: onlyBrand.Slug,
                   paddingBottom: '5px',
                   borderBottom: '2px solid',
                   fontSize: '18px',
+                  fontWeight:'500',
                   zIndex:1000
                 }}
               >

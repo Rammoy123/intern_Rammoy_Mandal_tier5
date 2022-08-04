@@ -31,7 +31,9 @@ const Step3 = () => {
     },[router.query])
 
 
-    const handleBar=()=>{
+    const handleBar=(e)=>{
+      e.preventDefault()
+
         router.push({
           pathname: '/ReturnPickup',
           query: {
@@ -154,7 +156,7 @@ const Step3 = () => {
             <a style={{textDecoration:'none',color:'white',cursor:'pointer',marginTop:'1px',background: '#8755DE'}} onClick={handleBar} className="com-button">
                     Next Step <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a>
-           ) :( <a  style={{marginTop:'1px'}}  className="com-button">
+           ) :( <a  style={{marginTop:'1px',color:'white',textDecoration:'none'}}  className="com-button">
                     Next Step <img className="arrowsvg" src={Arrow.src} alt="arrow"/>
                 </a> )
 }

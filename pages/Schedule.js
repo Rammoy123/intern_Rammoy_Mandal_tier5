@@ -7,7 +7,7 @@ import blackLogo from '../styles/assets/img/blacklogo.svg'
 import { useRouter } from 'next/router'
 
 import db from './components/Json/retailers.json'
-import $ from 'jquery'
+
 
 
 const Schedule = () => {
