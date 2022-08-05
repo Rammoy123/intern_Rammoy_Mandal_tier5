@@ -51,7 +51,7 @@ left:92px
     height: 90vh; */
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 90vh;
+    height: 0vh;
     z-index: -5;
     /* visibility:hidden */
   }

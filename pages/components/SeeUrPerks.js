@@ -126,7 +126,7 @@ const SeeUrPerks = () => {
           ))}
         </Document>
       </div>
-      )
+      
     </div>
   )
   //  ReactDOM.render(<PDFViewer />)
